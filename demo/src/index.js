@@ -1,15 +1,47 @@
-import React, {Component} from 'react'
-import {render} from 'react-dom'
+import React from "react";
+import { render } from "react-dom";
 
-import Example from '../../src'
+import ReactPWAInstallProvider, { useReactPWAInstall } from "../../src";
 
-export default class Demo extends Component {
-  render() {
-    return <div>
-      <h1>react-pwa-install Demo</h1>
-      <Example/>
+export default function Demo() {
+  const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
+
+  console.log("Installable: ", supported());
+
+  const handleClick = () => {
+    pwaInstall({
+      title: "Install Web App",
+      logo: "src/sign3.png",
+      features: (
+        <ul>
+          <li>Cool feature 1</li>
+          <li>Cool feature 2</li>
+          <li>Even cooler feature</li>
+          <li>Works offline</li>
+        </ul>
+      ),
+      description: "This is a very good app that does a lot of useful stuff. ",
+    })
+      .then(() => {
+        alert("App installed successfully or the install instruction was shown");
+      })
+      .catch(() => alert("App not installed, user opted out. "));
+  };
+
+  return (
+    <div>
+      {supported() && !isInstalled() && (
+        <button type="button" onClick={handleClick}>
+          Click me to install
+        </button>
+      )}
     </div>
-  }
+  );
 }
 
-render(<Demo/>, document.querySelector('#demo'))
+render(
+  <ReactPWAInstallProvider>
+    <Demo />
+  </ReactPWAInstallProvider>,
+  document.querySelector("#demo")
+);

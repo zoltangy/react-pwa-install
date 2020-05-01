@@ -1,7 +1,7 @@
 {
   "name": "react-pwa-install",
   "version": "1.0.0",
-  "description": "react-pwa-install React component",
+  "description": "Install support for your PWA on several platforms",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -19,7 +19,9 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@material-ui/core": "^4.9.12"
+  },
   "peerDependencies": {
     "react": "16.x"
   },
