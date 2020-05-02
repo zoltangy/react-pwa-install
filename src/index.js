@@ -6,11 +6,11 @@ const ReactPWAInstallContext = createContext(Promise.reject);
 
 export const useReactPWAInstall = () => useContext(ReactPWAInstallContext);
 
-export default function ReactPWAInstallProvider({ children }) {
+export default function ReactPWAInstallProvider({ children, enableLogging }) {
   const awaitingPromiseRef = useRef();
   const platform = useRef(getPlatform());
+  const deferredprompt = useRef(null);
   const [dialogState, setDialogState] = useState(null);
-  const [deferredprompt, setDeferredprompt] = useState(null);
   const [contextValue, setContextValue] = useState({
     supported: supported,
     isInstalled: isInstalled,
@@ -24,31 +24,38 @@ export default function ReactPWAInstallProvider({ children }) {
     };
   }, []);
 
+  function logger(message) {
+    if (enableLogging) {
+      console.log(message);
+    }
+  }
+
   function isInstalled() {
     if (window.navigator.standalone === true || window.matchMedia("(display-mode: standalone)").matches) {
-      console.log("Already in standalone mode");
+      logger("isInstalled: true. Already in standalone mode");
       return true;
     }
+    logger("isInstalled: false.");
     return false;
   }
 
   function supported() {
-    if (deferredprompt != null && platform.current === platforms.NATIVE) {
-      console.log("native platform");
+    if (deferredprompt.current != null && platform.current === platforms.NATIVE) {
+      logger("supported: true - native platform");
       return true;
     }
     if (platform.current !== platforms.NATIVE && platform.current !== platforms.OTHER) {
-      console.log("supported, but needs to be done manually");
+      logger("supported: true - manual support");
       return true;
     }
-    console.log("not supported");
+    logger("supported: false");
     return false;
   }
 
   function handleBeforeInstallPromptEvent(event) {
-    setDeferredprompt(event);
     event.preventDefault();
-    console.log("beforeinstallprompt event");
+    deferredprompt.current = event;
+    logger("beforeinstallprompt event fired and captured");
   }
 
   function openDialog(options) {
@@ -66,20 +73,20 @@ export default function ReactPWAInstallProvider({ children }) {
   }
 
   function handleInstall() {
-    console.log("handleInstall");
+    logger("handleInstall called");
     setDialogState(null);
-    if (deferredprompt != null) {
-      return deferredprompt
+    if (deferredprompt.current != null) {
+      return deferredprompt.current
         .prompt()
-        .then((event) => deferredprompt.userChoice)
+        .then((event) => deferredprompt.current.userChoice)
         .then((choiceResult) => {
           if (choiceResult.outcome === "accepted") {
-            console.log("PWA installed succesfully");
+            logger("PWA native installation succesful");
             if (awaitingPromiseRef.current) {
               awaitingPromiseRef.current.resolve();
             }
           } else {
-            console.log("User opted out by cancelling install");
+            logger("User opted out by cancelling native installation");
             if (awaitingPromiseRef.current) {
               awaitingPromiseRef.current.reject();
             }
@@ -89,7 +96,7 @@ export default function ReactPWAInstallProvider({ children }) {
           if (awaitingPromiseRef.current) {
             awaitingPromiseRef.current.resolve();
           }
-          console.log("Error occurred in the installing process: ", err);
+          logger("Error occurred in the installing process: ", err);
         });
     } else {
       if (awaitingPromiseRef.current) {

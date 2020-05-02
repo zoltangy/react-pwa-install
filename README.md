@@ -23,9 +23,9 @@ $ npm i --save react-pwa-install
 
 ## Prerequisites
 
-Make sure that your [PWA is installable](https://web.dev/install-criteria/). You can use Lighthouse from Chrome DevTools to run a PWA Audit.
+Make sure that your [PWA is installable]. You can use Lighthouse from Chrome DevTools to run a PWA Audit.
 
-Please also read [this guide] on best practices to promoto the installation of your app.
+Please also read [this guide] on best practices to promote the installation of your app.
 
 ## Usage
 
@@ -38,6 +38,7 @@ Please also read [this guide] on best practices to promoto the installation of y
 import React from "react";
 import ReactDOM from "react-dom";
 import ReactPWAInstallProvider, { useReactPWAInstall } from "react-pwa-install";
+import myLogo from "img/logo.png";
 
 function App() {
   const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
@@ -45,7 +46,7 @@ function App() {
   const handleClick = () => {
     pwaInstall({
       title: "Install Web App",
-      logo: "img/myLogo.png",
+      logo: myLogo,
       features: (
         <ul>
           <li>Cool feature 1</li>
@@ -56,7 +57,7 @@ function App() {
       ),
       description: "This is a very good app that does a lot of useful stuff. ",
     })
-      .then(() => alert("App installed successfully or instructions for install shown");)
+      .then(() => alert("App installed successfully or instructions for install shown"))
       .catch(() => alert("User opted out from installing"));
   };
 
@@ -69,11 +70,10 @@ function App() {
       )}
     </div>
   );
-
 }
 
 ReactDOM.render(
-  <ReactPWAInstallProvider>
+  <ReactPWAInstallProvider enableLogging>
     <App />
   </ReactPWAInstallProvider>,
   document.querySelector("#root")
@@ -82,7 +82,7 @@ ReactDOM.render(
 
 ## API
 
-- `ReactPWAInstallProvider`: Context provider, required.
+- `ReactPWAInstallProvider`: Context provider, required. For debug purposes, the `enableLogging` property can be used.
 - `useReactPWAInstall`: React hook that provides `pwaInstall`, `supported`, `isInstalled`
 - `supported`: Helper function to decide if the install button should be shown to the user. Returns true in 2 cases:
   - the beforeinstallprompt event is supported, and it has fired
@@ -112,3 +112,4 @@ See https://material-ui.com/customization/theming/ for more info.
 [add to home screen]: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Add_to_home_screen
 [beforeinstallpromptevent]: https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent
 [this guide]: https://web.dev/promote-install/
+[pwa is installable]: https://web.dev/install-criteria/

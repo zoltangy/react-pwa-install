@@ -33,8 +33,13 @@
   "author": "",
   "homepage": "",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/zoltangy/react-pwa-install",
   "keywords": [
-    "react-component"
+    "react-component",
+    "react",
+    "PWA",
+    "install",
+    "A2HS",
+    "add to home screen"
   ]
 }
