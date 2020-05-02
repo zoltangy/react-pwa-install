@@ -25,6 +25,5 @@ export function getPlatform() {
   } else {
     platform = platforms.OTHER;
   }
-  console.log(platform);
   return platform;
 }
