@@ -8,7 +8,7 @@ export const platforms = {
 
 export function getPlatform() {
   var platform;
-  var ua = window.navigator.userAgent;
+  const ua = window.navigator.userAgent;
 
   if (window.hasOwnProperty("BeforeInstallPromptEvent")) {
     platform = platforms.NATIVE;

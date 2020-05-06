@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, Box } from "@material-ui/core";
-import { DialogActions } from "@material-ui/core";
+import { DialogActions, Typography, Button, Box } from "@material-ui/core";
 import { platforms } from "./Platforms";
 import { IOSShareIcon, FireFoxA2HSIcon, OperaMenuIcon, OperaA2HSIcon } from "./Icons";
 
@@ -17,9 +16,9 @@ export default function InstallDialogAction(props) {
           </>
         )}
         {props.platform === platforms.IDEVICE && (
-          <>
+          <Box width="100%" display="flex" flexDirection="column">
             <Box>
-              To install this app:
+              <Typography variant="subtitle1">To install this app:</Typography>
               <ul>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
@@ -27,16 +26,18 @@ export default function InstallDialogAction(props) {
                     <IOSShareIcon />
                   </span>
                 </li>
-                <li>then 'Add to Homescreen'</li>
+                <li>then find and tap 'Add to Homescreen'</li>
               </ul>
             </Box>
-            <Button onClick={props.onSubmit}>Ok</Button>
-          </>
+            <Box width="100%" textAlign="right">
+              <Button onClick={props.onSubmit}>Ok</Button>
+            </Box>
+          </Box>
         )}
         {props.platform === platforms.FIREFOX && (
-          <>
+          <Box width="100%" display="flex" flexDirection="column">
             <Box>
-              To install this app:
+              <Typography variant="subtitle1">To install this app:</Typography>
               <ul>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
@@ -47,13 +48,15 @@ export default function InstallDialogAction(props) {
                 <li>then tap '+Add to Homescreen'</li>
               </ul>
             </Box>
-            <Button onClick={props.onSubmit}>Ok</Button>
-          </>
+            <Box width="100%" textAlign="right">
+              <Button onClick={props.onSubmit}>Ok</Button>
+            </Box>
+          </Box>
         )}
         {props.platform === platforms.OPERA && (
-          <>
+          <Box width="100%" display="flex" flexDirection="column">
             <Box>
-              To install this app:
+              <Typography variant="subtitle1">To install this app:</Typography>
               <ul>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
@@ -70,14 +73,18 @@ export default function InstallDialogAction(props) {
                 </li>
               </ul>
             </Box>
-            <Button onClick={props.onSubmit}>Ok</Button>
-          </>
+            <Box width="100%" textAlign="right">
+              <Button onClick={props.onSubmit}>Ok</Button>
+            </Box>
+          </Box>
         )}
         {props.platform === platforms.OTHER && (
-          <>
+          <Box width="100%" display="flex" flexDirection="column">
             <Box>Unfortunately the install feature is not supported by your browser.</Box>
-            <Button onClick={props.onClose}>Ok</Button>
-          </>
+            <Box width="100%" textAlign="right">
+              <Button onClick={props.onClose}>Ok</Button>
+            </Box>
+          </Box>
         )}
       </DialogActions>
     </>

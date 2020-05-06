@@ -11,7 +11,7 @@ export default function Demo() {
   const handleClick = () => {
     pwaInstall({
       title: "Install Web App",
-      logo: "src/sign3.png",
+      logo: "src/logo.png",
       features: (
         <ul>
           <li>Cool feature 1</li>
@@ -30,11 +30,13 @@ export default function Demo() {
 
   return (
     <div>
-      {supported() && !isInstalled() && (
-        <button type="button" onClick={handleClick}>
-          Click me to install
-        </button>
-      )}
+      {
+        /*supported() && !isInstalled()*/ true && (
+          <button type="button" onClick={handleClick}>
+            Click me to install
+          </button>
+        )
+      }
     </div>
   );
 }
