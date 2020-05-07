@@ -112,7 +112,7 @@ The following options are available to customize the install dialog:
 To customize the colors and fonts of the dialog, you can wrap the ReactPWAInstallProvider with a Material-UI ThemeProvider.
 See https://material-ui.com/customization/theming/ for more info.
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
+[npm-badge]: https://img.shields.io/npm/v/react-pwa-install
 [npm]: https://www.npmjs.com/package/react-pwa-install
 [pwa]: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
 [add to home screen]: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Add_to_home_screen
