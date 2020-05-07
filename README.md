@@ -15,10 +15,16 @@ This package provides a simple way to add a custom PWA installing capability to 
 - If a user is visiting your PWA from a browser that supports the native [BeforeInstallPromptEvent], then this method will be used for the installation. ( Currently: Chrome - mobile and desktop, Edge - mobile, Samsung internet )
 - If a user is visiting your PWA from a browser that supports "manual installation", then instructions will be shown to them. ( Currently iOS devices, FireFox - mobile, Opera - mobile).
 
+## Demo
+
+To view the demo visit: https://zoltangy.github.io/react-pwa-install-demo/ (view [source code]).
+
 ## Installation
 
+To use the package, you also need to install @material-ui/core.
+
 ```shell
-$ npm i --save react-pwa-install
+$ npm i --save react-pwa-install @material-ui/core
 ```
 
 ## Prerequisites
@@ -113,3 +119,4 @@ See https://material-ui.com/customization/theming/ for more info.
 [beforeinstallpromptevent]: https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent
 [this guide]: https://web.dev/promote-install/
 [pwa is installable]: https://web.dev/install-criteria/
+[source code]: https://github.com/zoltangy/react-pwa-install-demo

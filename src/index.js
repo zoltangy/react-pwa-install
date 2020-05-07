@@ -6,9 +6,10 @@ const ReactPWAInstallContext = createContext(Promise.reject);
 
 export const useReactPWAInstall = () => useContext(ReactPWAInstallContext);
 
+const platform = getPlatform();
+
 export default function ReactPWAInstallProvider({ children, enableLogging }) {
   const awaitingPromiseRef = useRef();
-  const platform = useRef(getPlatform());
   const deferredprompt = useRef(null);
   const [dialogState, setDialogState] = useState(null);
   const [contextValue, setContextValue] = useState({
@@ -40,11 +41,11 @@ export default function ReactPWAInstallProvider({ children, enableLogging }) {
   }
 
   function supported() {
-    if (deferredprompt.current != null && platform.current === platforms.NATIVE) {
+    if (deferredprompt.current != null && platform === platforms.NATIVE) {
       logger("supported: true - native platform");
       return true;
     }
-    if (platform.current !== platforms.NATIVE && platform.current !== platforms.OTHER) {
+    if (platform !== platforms.NATIVE && platform !== platforms.OTHER) {
       logger("supported: true - manual support");
       return true;
     }
@@ -56,6 +57,11 @@ export default function ReactPWAInstallProvider({ children, enableLogging }) {
     event.preventDefault();
     deferredprompt.current = event;
     logger("beforeinstallprompt event fired and captured");
+    setContextValue({
+      supported: supported,
+      isInstalled: isInstalled,
+      pwaInstall: openDialog,
+    });
   }
 
   function openDialog(options) {
@@ -113,7 +119,7 @@ export default function ReactPWAInstallProvider({ children, enableLogging }) {
         open={Boolean(dialogState)}
         onSubmit={handleInstall}
         onClose={handleClose}
-        platform={platform.current}
+        platform={platform}
         {...dialogState}
       />
     </>
