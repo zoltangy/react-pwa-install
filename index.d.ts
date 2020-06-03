@@ -17,4 +17,10 @@ export function useReactPWAInstall(): {
   }) => Promise;
 };
 
-export const ReactPWAInstallProvider: React.FC<{ enableLogging: boolean }>;
+/**
+ * Context provider for react-pwa-install
+ *
+ *  See: https://www.npmjs.com/package/react-pwa-install for more info.
+ */
+const ReactPWAInstallProvider: React.FC<{ enableLogging?: boolean }>;
+export default ReactPWAInstallProvider;
