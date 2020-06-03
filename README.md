@@ -100,12 +100,12 @@ ReactDOM.render(
 
 The following options are available to customize the install dialog:
 
-| Prop                     | Default Value   | Description                                               |
-| ------------------------ | --------------- | --------------------------------------------------------- |
-| `title (optional)`       | Install Web App | The header of the dialog window                           |
-| `logo (optional)`        | -               | Path to an image representing the app, typically the icon |
-| `features (optional)`    | -               | A list of features, see "Usage" for an example            |
-| `description (optional)` | -               | Description of the app                                    |
+| Prop                     | type            | Default Value   | Description                                               |
+| ------------------------ | --------------- | --------------- | --------------------------------------------------------- |
+| `title (optional)`       | string          | Install Web App | The header of the dialog window                           |
+| `logo (optional)`        | string          | -               | Path to an image representing the app, typically the icon |
+| `features (optional)`    | React.ReactNode | -               | A list of features, see "Usage" for an example            |
+| `description (optional)` | string          | -               | Description of the app                                    |
 
 ## Customization
 
