@@ -16,3 +16,5 @@ export function useReactPWAInstall(): {
     description?: string;
   }) => Promise;
 };
+
+export const ReactPWAInstallProvider: React.FC<{ enableLogging: boolean }>;

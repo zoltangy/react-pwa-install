@@ -8,7 +8,7 @@ export const useReactPWAInstall = () => useContext(ReactPWAInstallContext);
 
 const platform = getPlatform();
 
-export default function ReactPWAInstallProvider({ children, enableLogging }) {
+export const ReactPWAInstallProvider = ({ children, enableLogging }) => {
   const awaitingPromiseRef = useRef();
   const deferredprompt = useRef(null);
   const [dialogState, setDialogState] = useState(null);
@@ -124,4 +124,6 @@ export default function ReactPWAInstallProvider({ children, enableLogging }) {
       />
     </>
   );
-}
+};
+
+export default ReactPWAInstallProvider;
