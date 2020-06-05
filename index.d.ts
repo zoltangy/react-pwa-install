@@ -14,7 +14,7 @@ export function useReactPWAInstall(): {
     logo?: string;
     features?: React.ReactNode;
     description?: string;
-  }) => Promise;
+  }) => Promise<void>;
 };
 
 /**
@@ -22,5 +22,5 @@ export function useReactPWAInstall(): {
  *
  *  See: https://www.npmjs.com/package/react-pwa-install for more info.
  */
-const ReactPWAInstallProvider: React.FC<{ enableLogging?: boolean }>;
+export const ReactPWAInstallProvider: React.FC<{ enableLogging?: boolean }>;
 export default ReactPWAInstallProvider;
