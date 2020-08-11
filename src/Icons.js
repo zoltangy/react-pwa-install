@@ -50,7 +50,7 @@ l-1205 3 -28 23 c-15 12 -42 32 -60 45 -21 14 -47 51 -74 103 l-41 82 1 1202
   );
 }
 
-export function OperaMenuIcon() {
+export function MenuIcon() {
   return (
     <SvgIcon viewBox="0 0 24 24">
       <path
