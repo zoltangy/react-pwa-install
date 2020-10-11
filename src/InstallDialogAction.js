@@ -43,6 +43,7 @@ export default function InstallDialogAction(props) {
               </>
             }
             action2="then find and tap 'Add to Homescreen'"
+            onSubmit={props.onSubmit}
           />
         )}
         {props.platform === platforms.FIREFOX && (
@@ -54,6 +55,7 @@ export default function InstallDialogAction(props) {
               </>
             }
             action2="then tap '+Add to Homescreen'"
+            onSubmit={props.onSubmit}
           />
         )}
         {props.platform === platforms.FIREFOX_NEW && (
@@ -65,6 +67,7 @@ export default function InstallDialogAction(props) {
               </>
             }
             action2="then tap 'Install'"
+            onSubmit={props.onSubmit}
           />
         )}
         {props.platform === platforms.OPERA && (
@@ -82,6 +85,7 @@ export default function InstallDialogAction(props) {
                 Home screen'
               </>
             }
+            onSubmit={props.onSubmit}
           />
         )}
         {props.platform === platforms.OTHER && (
