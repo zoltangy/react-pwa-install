@@ -2,7 +2,8 @@ import React from "react";
 import { Box, Typography, Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import InstallDialogAction from "./InstallDialogAction";
 
-export default function InstallDialog(props) {
+
+const InstallDialog = (props) => {
   return (
     <Dialog open={props.open} onClose={props.onClose} aria-labelledby="dialog-title">
       <DialogTitle id="dialog-title">{props.title || "Install Web App"}</DialogTitle>
@@ -10,12 +11,12 @@ export default function InstallDialog(props) {
         <Box display="flex" alignItems="flex-start">
           {!!props.logo && (
             <Box mr={1}>
-              <img src={props.logo} alt="logo" />
+              <img src={props.logo} alt="logo" style={{ width: '100%'}}/>
             </Box>
           )}
           {!!props.features && (
             <Box>
-              <Typography variant="subtitle1">Key Features:</Typography>
+              <Typography variant="subtitle1">{props.featuresTitle || "Key Features:"}</Typography>
               <Typography variant="body2" component="div">
                 {props.features}
               </Typography>
@@ -24,7 +25,7 @@ export default function InstallDialog(props) {
         </Box>
         {!!props.description && (
           <>
-            <Typography variant="subtitle1">Description:</Typography>
+            <Typography variant="subtitle1">{props.descritpionTitle || "Description:"}</Typography>
             <Typography variant="body2" component="div">
               {props.description}
             </Typography>
@@ -35,3 +36,5 @@ export default function InstallDialog(props) {
     </Dialog>
   );
 }
+
+export default InstallDialog;

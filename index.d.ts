@@ -13,7 +13,9 @@ export function useReactPWAInstall(): {
     title?: string;
     logo?: string;
     features?: React.ReactNode;
+    featuresTitle?: string,
     description?: string;
+    descritpionTitle?: string,
   }) => Promise<void>;
 };
 
