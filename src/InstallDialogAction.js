@@ -7,7 +7,7 @@ function DialogActionWithInstructions(props) {
   return (
     <Box width="100%" display="flex" flexDirection="column">
       <Box>
-        <Typography variant="subtitle1">To install this app:</Typography>
+        <Typography variant="subtitle1">{props.instructionTitle || "To install this app:"}</Typography>
         <ul>
           <li>
             <span style={{ display: "flex", alignItems: "center" }}>{props.action1}</span>
@@ -16,7 +16,7 @@ function DialogActionWithInstructions(props) {
         </ul>
       </Box>
       <Box width="100%" textAlign="right">
-        <Button onClick={props.onSubmit}>Ok</Button>
+        <Button onClick={props.onSubmit}>{props.instructionActionOk || "Ok"}</Button>
       </Box>
     </Box>
   );
@@ -28,9 +28,9 @@ export default function InstallDialogAction(props) {
       <DialogActions>
         {props.platform === platforms.NATIVE && (
           <>
-            <Button onClick={props.onClose}>Cancel</Button>
+            <Button onClick={props.onClose}>{props.instructionActionCancel || "Cancel"}</Button>
             <Button onClick={props.onSubmit} color="primary" variant="contained" disableElevation>
-              Install
+              {props.instructionActionInstall || "Install"}
             </Button>
           </>
         )}
@@ -38,11 +38,11 @@ export default function InstallDialogAction(props) {
           <DialogActionWithInstructions
             action1={
               <>
-                Tap the share button:
+                {props.instructionIdeviceAction1 || "Tap the share button:"}
                 <IOSShareIcon />
               </>
             }
-            action2="then find and tap 'Add to Homescreen'"
+            action2={props.instructionIdeviceAction2 || "then find and tap 'Add to Homescreen'"}
             onSubmit={props.onSubmit}
           />
         )}
@@ -50,11 +50,11 @@ export default function InstallDialogAction(props) {
           <DialogActionWithInstructions
             action1={
               <>
-                Tap this icon on the address bar:
+                {props.instructionFirefoxAction1 || "Tap this icon on the address bar:"}
                 <FireFoxA2HSIcon />
               </>
             }
-            action2="then tap '+Add to Homescreen'"
+            action2={props.instructionFirefoxAction2 || "then tap '+Add to Homescreen'"}
             onSubmit={props.onSubmit}
           />
         )}
@@ -62,11 +62,11 @@ export default function InstallDialogAction(props) {
           <DialogActionWithInstructions
             action1={
               <>
-                Tap the menu button:
+                {props.instructionFirefoxNewAction1 || "Tap the menu button:"}
                 <MenuIcon />
               </>
             }
-            action2="then tap 'Install'"
+            action2={props.instructionFirefoxNewAction2 || "then tap 'Install'"}
             onSubmit={props.onSubmit}
           />
         )}
@@ -74,15 +74,14 @@ export default function InstallDialogAction(props) {
           <DialogActionWithInstructions
             action1={
               <>
-                Tap the menu button:
+                {props.instructionOperaAction1 || "Tap the menu button:"}
                 <MenuIcon />
               </>
             }
             action2={
               <>
-                then tap &nbsp;'
+                {props.instructionOperaAction2 || "then tap 'Home screen: '"}
                 <OperaA2HSIcon />
-                Home screen'
               </>
             }
             onSubmit={props.onSubmit}
@@ -90,9 +89,9 @@ export default function InstallDialogAction(props) {
         )}
         {props.platform === platforms.OTHER && (
           <Box width="100%" display="flex" flexDirection="column">
-            <Box>Unfortunately the install feature is not supported by your browser.</Box>
+            <Box>{props.instructionNotSupported || "Unfortunately the install feature is not supported by your browser."}</Box>
             <Box width="100%" textAlign="right">
-              <Button onClick={props.onClose}>Ok</Button>
+              <Button onClick={props.onClose}>{props.instructionActionOk || "Ok"}</Button>
             </Box>
           </Box>
         )}
