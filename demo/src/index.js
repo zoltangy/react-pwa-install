@@ -11,7 +11,7 @@ export default function Demo() {
   const handleClick = () => {
     pwaInstall({
       title: "Install Web App",
-      logo: "src/logo.png",
+      logo: "../src/logo_pwa.png",
       features: (
         <ul>
           <li>Cool feature 1</li>
