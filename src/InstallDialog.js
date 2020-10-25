@@ -12,7 +12,7 @@ const InstallDialog = (props) => {
     <Dialog open={props.open} onClose={props.onClose} aria-labelledby="dialog-title" fullScreen={fullScreen}>
       <DialogTitle id="dialog-title">{props.title || "Install Web App"}</DialogTitle>
       <DialogContent dividers={true}>
-        <Grid container>
+        <Grid container alignItems="center" style={{ height: '100%' }}>
           {!!props.logo && (
             <Grid item xs={12} sm={6}>
               <Box mr={1}>
