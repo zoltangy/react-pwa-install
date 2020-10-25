@@ -40,7 +40,23 @@ const InstallDialog = (props) => {
           )}
         </Grid>
       </DialogContent>
-      <InstallDialogAction platform={props.platform} onSubmit={props.onSubmit} onClose={props.onClose} />
+      <InstallDialogAction 
+        platform={props.platform} 
+        onSubmit={props.onSubmit} 
+        onClose={props.onClose}
+        instructionTitle={props.instructionTitle}
+        instructionActionOk={props.instructionActionOk}
+        instructionActionCancel={props.instructionActionCancel}
+        instructionActionInstall={props.instructionActionInstall}
+        instructionIdeviceAction1={props.instructionIdeviceAction1}
+        instructionIdeviceAction2={props.instructionIdeviceAction2}
+        instructionFirefoxAction1={props.instructionFirefoxAction1}
+        instructionFirefoxAction2={props.instructionFirefoxAction2}
+        instructionFirefoxNewAction1={props.instructionFirefoxNewAction1}
+        instructionFirefoxNewAction2={props.instructionFirefoxNewAction2}
+        instructionOperaAction1={props.instructionOperaAction1}
+        instructionOperaAction2={props.instructionOperaAction2}
+        instructionNotSupported={props.instructionNotSupported} />
     </Dialog>
   );
 }
