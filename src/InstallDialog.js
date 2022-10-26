@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Dialog, DialogTitle, DialogContent } from "@material-ui/core";
+import { Box, Typography, Dialog, DialogTitle, DialogContent } from "@mui/material";
 import InstallDialogAction from "./InstallDialogAction";
 
 export default function InstallDialog(props) {
