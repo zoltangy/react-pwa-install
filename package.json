@@ -23,19 +23,19 @@
   "dependencies": {
     "mobile-device-detect": "^0.4.3"
   },
-  "peerDependencies": {
-    "react": "16.x"
-  },
   "devDependencies": {
-    "@material-ui/core": "^4.9.12",
+        "@emotion/react": "^11.9.0",
+        "@emotion/styled": "^11.8.1",
+        "@mui/icons-material": "^5.6.2",
+        "@mui/material": "^5.6.4",
     "nwb": "0.24.x",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
-  "author": "",
-  "homepage": "",
+  "author": "https://github.com/zoltangy",
+  "homepage": "https://zoltangy.github.io/react-pwa-install-demo/",
   "license": "MIT",
-  "repository": "https://github.com/zoltangy/react-pwa-install",
+  "repository": "https://github.com/petevb/react-pwa-install",
   "keywords": [
     "react-component",
     "react",
