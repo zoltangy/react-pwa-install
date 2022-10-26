@@ -1,5 +1,5 @@
 import React from "react";
-import { DialogActions, Typography, Button, Box } from "@material-ui/core";
+import { DialogActions, Typography, Button, Box } from "@mui/material";
 import { platforms } from "./Platforms";
 import { IOSShareIcon, FireFoxA2HSIcon, MenuIcon, OperaA2HSIcon } from "./Icons";
 
