@@ -22,5 +22,5 @@ export function useReactPWAInstall(): {
  *
  *  See: https://www.npmjs.com/package/react-pwa-install for more info.
  */
-export const ReactPWAInstallProvider: React.FC<{ enableLogging?: boolean }>;
+export const ReactPWAInstallProvider: React.FC<{ enableLogging?: boolean, children: JSX.Element | Element; }>;
 export default ReactPWAInstallProvider;
